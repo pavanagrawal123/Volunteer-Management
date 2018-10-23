@@ -16,7 +16,10 @@
       <td>{{ props.item.memberInfo.firstName }}</td>
       <td class="text-xs-right">{{ props.item.memberInfo.lastName }}</td>
       <td class="text-xs-right">{{ props.item.status }}</td>
-      <v-btn @click.native="remove(props.item._id)">Remove</v-btn>
+      <td class="text-xs-right">{{ props.item.confirmed }}</td>
+      <td><v-btn @click.native="remove(props.item._id)">Remove</v-btn></td>
+      <td><v-btn @click.native="contact(props.item._id)">Contacted</v-btn></td>
+      <td><v-btn @click.native="attend(props.item._id)">Able to Attend</v-btn></td>
     </template>
   </v-data-table>
           </v-layout>
@@ -35,7 +38,10 @@ export default {
         { text: 'First Name', value: 'memberInfo.firstName' },
         { text: 'Last Name', value: 'memberInfo.lastName' },
         { text: 'Signup Status', value: 'status' },
-        { text: 'Remove', value: 'remove' }
+        { text: 'Confirm Status', value: 'confirm' },
+        { text: 'Remove', value: 'remove' },
+        { text: 'Mark Contacted', value: 'markContacted' },
+        { text: 'Mark Able To Attend', value: 'markAttend' }
       ],
       events: []
     }
@@ -72,6 +78,34 @@ export default {
       $nuxt.$loading.start()
       axios
         .post(process.env.baseUrl + 'api/removeSignup', {
+          _id: _id
+        })
+        .then(response => {
+          $nuxt.$loading.finish()
+          this.getData();
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    },
+    attend: function(_id) {
+      $nuxt.$loading.start()
+      axios
+        .post(process.env.baseUrl + 'api/attendSignup', {
+          _id: _id
+        })
+        .then(response => {
+          $nuxt.$loading.finish()
+          this.getData();
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    },
+    contact: function(_id) {
+      $nuxt.$loading.start()
+      axios
+        .post(process.env.baseUrl + 'api/contactSignup', {
           _id: _id
         })
         .then(response => {
