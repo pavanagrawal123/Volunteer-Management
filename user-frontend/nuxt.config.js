@@ -5,7 +5,8 @@ module.exports = {
   mode: 'spa',
   env: {
     name: process.env.name || 'Test School',
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    url: process.env.url || 'http://localhost:3000'
   },
   /*
    ** Headers of the page

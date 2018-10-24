@@ -47,7 +47,7 @@ export default {
     return {
       items: [
           { icon: 'apps', title: 'Signup for events', to: '/signupEvents' },
-          { icon: 'bubble_chart', title: 'View events I\'m signed up for', to: '/eventDetails' },
+          { icon: 'bubble_chart', title: 'View events signed up for/Cancel', to: '/eventDetails' },
           { icon: 'exit_to_app', title: 'Logout', to: '/' }
         ],
     }
