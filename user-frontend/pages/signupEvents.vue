@@ -4,6 +4,10 @@
     justify-center
     align-center>
     <v-btn @click="back" small>Back</v-btn>
+    <v-container
+          fluid
+          grid-list-md
+        >
             <v-flex
               v-for="event in events"
               :key="event._id"
@@ -12,6 +16,7 @@
         <v-img
           :src=event.image
           aspect-ratio="2.75"
+          height="200px"
         ></v-img>
 
         <v-card-title primary-title>
@@ -27,10 +32,11 @@
         </v-card-actions>
       </v-card>
     </v-flex>
+    </v-container>
        <v-dialog
       v-model="dialog"
-      max-width="290"
-    >
+      max-width="290">
+
       <v-card>
 
         <v-card-text>
@@ -87,7 +93,10 @@ export default {
         )
         .then(response => {
            $nuxt.$loading.finish()
-          this.events = response.data.res
+           response.data.res.sort((a,b) => {
+             return a.date.localeCompare(b.date);
+           })
+          this.events = response.data.res.reverse()
         })
         .catch(function(error) {
           console.log(error)
