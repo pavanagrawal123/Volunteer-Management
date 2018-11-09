@@ -17,6 +17,7 @@
       <td class="text-xs-right">{{ props.item.memberInfo.lastName }}</td>
       <td class="text-xs-right">{{ props.item.status }}</td>
       <td class="text-xs-right">{{ props.item.confirmed }}</td>
+      <td class="text-xs-right">{{ props.item.memberInfo.phoneNumber }}</td>
       <td><v-btn @click.native="remove(props.item._id)">Remove</v-btn></td>
       <td><v-btn @click.native="contact(props.item._id)">Contacted</v-btn></td>
       <td><v-btn @click.native="attend(props.item._id)">Able to Attend</v-btn></td>
@@ -39,6 +40,7 @@ export default {
         { text: 'Last Name', value: 'memberInfo.lastName' },
         { text: 'Signup Status', value: 'status' },
         { text: 'Confirm Status', value: 'confirm' },
+        { text: 'Phone Number', value: 'phoneNumber' },
         { text: 'Remove', value: 'remove' },
         { text: 'Mark Contacted', value: 'markContacted' },
         { text: 'Mark Able To Attend', value: 'markAttend' }
